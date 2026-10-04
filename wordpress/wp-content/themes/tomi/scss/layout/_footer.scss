@@ -1,0 +1,170 @@
+@use "../foundation/variables" as v;
+
+.footer {
+  padding: 40px 20px 40px v.fluid(20, 120, 375, 767);
+  color: var(--white);
+  background: var(--sky-blue);
+
+  @include v.tab {
+    padding: 40px 20px 40px;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 44px;
+    max-width: 1330px;
+    margin: 0 auto 36px;
+
+    @include v.tab {
+      grid-template-columns: 1.45fr 1fr 1fr;
+      gap: 34px;
+    }
+
+    @include v.lt {
+      grid-template-columns: 1.35fr .86fr 1.03fr 1fr;
+      gap: 0;
+    }
+  }
+
+  &__profile {
+    min-width: 0;
+
+    @include v.lt {
+      padding-right: 30px;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 31px;
+  }
+
+  &__logo-link {
+    display: inline-block;
+  }
+
+  &__logo-img {
+    width: 200px;
+    height: auto;
+  }
+
+  &__text {
+    margin-bottom: 0;
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &__nav--menu {
+    @include v.lt {
+      width: 230px;
+      min-height: 230px;
+      padding-left: v.fluid(30, 68, 1024, 1440);
+      margin-left: -6px;
+      border-left: 1px dotted var(--line);
+    }
+
+
+  }
+
+  &__nav--service {
+    @include v.lt {
+      width: 250px;
+      min-height: 230px;
+      padding-left: v.fluid(30, 68, 1024, 1440);
+      margin-left: -28px;
+      border-left: 1px dotted var(--line);
+    }
+  }
+
+  &__heading {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__nav-link {
+    display: block;
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.5;
+
+    &+& {
+      margin-top: 4px;
+    }
+  }
+
+  &__contact {
+    @include v.tab {
+      grid-column: 1 / -1;
+    }
+
+    @include v.lt {
+      position: relative;
+      grid-column: auto;
+      min-height: 230px;
+      padding-left: v.fluid(30, 66, 1024, 1440);
+      margin-left: -41px;
+    }
+
+    &::before {
+      @include v.lt {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 230px;
+        content: "";
+        border-left: 1px dotted var(--line);
+      }
+    }
+  }
+
+  &__contact-heading {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  &__contact-text {
+    margin-bottom: 20px;
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  &__sns {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__sns-link {
+    display: block;
+    width: 28px;
+    height: 28px;
+  }
+
+  &__sns-img {
+    width: 100%;
+    height: auto;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 515px;
+    margin: 0 auto;
+    color: var(--white);
+    font-size: 11px;
+  }
+
+  &__bottom-link {
+    color: inherit;
+  }
+}

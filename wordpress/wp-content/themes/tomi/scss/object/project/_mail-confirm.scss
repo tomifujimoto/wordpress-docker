@@ -1,0 +1,63 @@
+@use "../../foundation/variables" as v;
+
+.mail-confirm {
+  min-height: calc(100vh - 72px);
+  background: var(--pale-blue);
+  line-height: 1.8;
+
+  @include v.tab { min-height: calc(100vh - 94px); }
+
+  &__inner {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: v.fluid(40, 72, 375, 1440) 20px;
+  }
+
+  &__box {
+    padding: v.fluid(24, 48, 375, 1440) v.fluid(20, 48, 375, 1440);
+    background: var(--white);
+    border-radius: v.fluid(12, 24, 375, 1440);
+  }
+
+  &__lead { margin: 0 0 28px; font-size: 16px; }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 16px;
+
+    th, td { display: block; padding: 12px 16px; text-align: left; overflow-wrap: anywhere; }
+    th { background: var(--pale-blue); font-weight: 700; }
+    td { padding-bottom: 24px; }
+
+    @include v.tab {
+      th, td { display: table-cell; padding: 20px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { width: 32%; }
+    }
+  }
+
+  &__caption { text-align: left; font-weight: 700; padding-bottom: 12px; }
+
+  &__actions { display: grid; gap: 16px; max-width: 400px; margin: 32px auto 0; }
+
+  &__send, &__back { width: 100%; min-height: 54px; font: inherit; font-weight: 700; cursor: pointer; }
+
+  &__send {
+    &:hover,
+    &:focus-visible {
+      transform: none;
+    }
+  }
+
+  &__back {
+    padding: 12px 20px;
+    color: var(--sky-blue);
+    background: var(--white);
+    border: 1px solid var(--sky-blue);
+    border-radius: 10px;
+    &:hover { background: var(--pale-blue); }
+  }
+
+  &__errors { padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+}

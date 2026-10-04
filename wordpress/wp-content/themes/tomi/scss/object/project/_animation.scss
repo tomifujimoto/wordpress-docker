@@ -1,0 +1,154 @@
+@keyframes mv-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mv-background-in {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+@keyframes mv-background-drift {
+
+  0% {
+    transform: scale(0.98);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes mv-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mv-button-left-in {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes mv-button-right-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mv {
+
+  &::before {
+    transform: scale(1);
+    transform-origin: center center;
+    animation: mv-background-drift 0.8s ease-in-out;
+  }
+
+  &::after {
+    animation: mv-background-in 2s cubic-bezier(.22, 1, .36, 1) .08s both;
+  }
+
+  &__card {
+    animation: mv-fade-up .85s cubic-bezier(.22, 1, .36, 1) .2s both;
+  }
+
+  &__title {
+    animation: mv-text-in .7s ease .42s both;
+  }
+
+  &__lead {
+    animation: mv-text-in .7s ease .56s both;
+  }
+
+  &__actions {
+    .btn:first-child {
+      animation: mv-button-left-in .75s cubic-bezier(.22, 1, .36, 1) .78s backwards;
+    }
+
+    .btn:last-child {
+      animation: mv-button-right-in .75s cubic-bezier(.22, 1, .36, 1) .88s backwards;
+    }
+  }
+}
+
+.js-enabled {
+
+  .js-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s ease var(--reveal-delay, 0ms),
+      transform .7s ease var(--reveal-delay, 0ms);
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv {
+
+    &::before,
+    &::after {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+
+    &__card,
+    &__title,
+    &__lead,
+    &__actions .btn {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+
+  .js-enabled {
+    .js-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

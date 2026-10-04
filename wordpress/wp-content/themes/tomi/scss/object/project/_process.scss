@@ -1,0 +1,169 @@
+@use "../../foundation/variables" as v;
+
+.process {
+  scroll-margin-top: 170px;
+  background: var(--pale-blue);
+
+  &__inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: v.fluid(60, 80, 375, 1440) 20px;
+  }
+
+  &__lead {
+    margin: -20px 0 0;
+    font-size: v.fluid(14, 16, 375, 1440);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    gap: 24px;
+    max-width: 1028px;
+    margin: 40px auto 0;
+
+    @include v.tab {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include v.lt {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      max-width: 1080px;
+    }
+  }
+
+  &__card {
+    position: relative;
+  }
+
+  &__card:not(:last-child)::after {
+
+    @include v.lt {
+      position: absolute;
+      top: 5px;
+      right: -22px;
+      display: block;
+      width: 24px;
+      height: 24px;
+      content: "";
+      background-image: url("../img/Process-arrow.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  &__number {
+    margin: 0 0 10px;
+    color: var(--primary);
+    font-size: v.fluid(28, 35, 375, 1440);
+    line-height: 1;
+    text-align: center;
+  }
+
+  &__body {
+    padding: 40px 8px 50px;
+    background: var(--white);
+    border-top: 2px solid var(--primary);
+    border-radius: 0 0 8px 8px;
+    box-shadow: var(--card-shadow);
+    min-height: 378px;
+
+    @include v.lt {
+      padding: 40px 4px 50px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    width: fit-content;
+    margin-inline: auto;
+
+    @include v.tab {
+      font-size: 20px;
+    }
+
+    @include v.lt {
+      font-size: 20px;
+    }
+
+    @include v.lt-narrow {
+      font-size: 16px;
+    }
+
+  }
+
+  &__text {
+    min-height: 70px;
+    margin: 16px 0 0;
+    font-size: 16px;
+    line-height: 1.45;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  &__content {
+    position: relative;
+    margin-top: 20px;
+    padding-top: 14px;
+  }
+
+  &__content::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    content: "";
+    background-image: var(--dot-line);
+  }
+
+  &__content-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    min-height: 30px;
+    margin: 0 auto;
+    color: var(--primary);
+    background: var(--pale-blue);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__items {
+    display: grid;
+    gap: 6px;
+    width: fit-content;
+    margin: 18px auto 0;
+    padding-left: 8px;
+
+    @include v.tab {
+      justify-items: stretch;
+      margin-top: 18px;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &__item {
+    font-size: 16px;
+    line-height: 1.4;
+
+    @include v.lt {
+      font-size: 16px;
+    }
+
+    @include v.lt-narrow {
+      font-size: 14px;
+    }
+  }
+}

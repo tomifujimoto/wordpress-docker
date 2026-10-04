@@ -1,0 +1,79 @@
+@use "sass:math";
+
+:root {
+  --white: #FFFFFF;
+  --ink: #000000;
+  --line: #DADADA;
+  --dot-line: repeating-linear-gradient(to right,
+      rgba(0, 0, 0, .35) 0,
+      rgba(0, 0, 0, .35) 1px,
+      transparent 3px,
+      transparent 5px);
+  --surface: #F6F6F6;
+  --surface-gray: #EBEBF0;
+  --pale-blue: #F2F6FF;
+  --field-bg: #F4F4F5;
+  --primary: #004BE0;
+  --primary-hover: #003BB3;
+  --soft-strong: #F0F0FC;
+  --muted: #A8A8A8;
+  --navy: #34327F;
+  --gold: #E0B24A;
+  --sky-blue: #4785FF;
+  --amber: #F59E0B;
+  --orange: #EA580C;
+  --white-line-soft: rgba(255, 255, 255, .28);
+  --nav-hover: #FFE7B3;
+  --nav-hover-soft: rgba(255, 231, 179, 0.14);
+  --panel: #FAFAFA;
+  --shadow: 0 18px 45px rgba(37, 45, 62, .13);
+  --card-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+  --button-shadow: 0 4px 4px rgba(0, 0, 0, .18);
+  --button-hover-shadow: 0 6px 10px rgba(37, 45, 62, .2);
+}
+
+@function fluid($min, $max, $min-vw: 375, $max-vw: 1440) {
+  $slope: math.div($max - $min, $max-vw - $min-vw);
+  $vw: $slope * 100;
+  $intercept: $min - $slope * $min-vw;
+
+  @return clamp(#{$min}px, #{$intercept}px + #{$vw}vw, #{$max}px);
+}
+
+// メディアクエリ
+$sp: 767;
+$tab: 768;
+$lt: 1024;
+$lt-narrow-max: 1099;
+$pc: 1440;
+
+
+@mixin pc {
+  @media (min-width: ($pc + px)) {
+    @content;
+  }
+}
+
+@mixin lt {
+  @media (min-width: ($lt + px)) {
+    @content;
+  }
+}
+
+@mixin lt-narrow {
+  @media (min-width: ($lt + px)) and (max-width: ($lt-narrow-max + px)) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media (min-width: ($tab + px)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width: ($sp + px)) {
+    @content;
+  }
+}

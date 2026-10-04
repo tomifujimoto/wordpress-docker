@@ -1,0 +1,98 @@
+@use "../../foundation/variables" as v;
+
+
+.legal {
+    background: var(--pale-blue);
+
+    &__inner {
+        width: 100%;
+        max-width: 990px;
+        margin: 0 auto;
+        padding: v.fluid(60, 86, 375, 1440) 20px v.fluid(72, 110, 375, 1440);
+    }
+
+    &__head {
+        margin-bottom: v.fluid(28, 36, 375, 1440);
+        text-align: center;
+    }
+
+    &__lead {
+        margin: 0;
+        color: var(--primary);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+    }
+
+    &__title {
+        margin: 10px 0 0;
+        font-size: v.fluid(27, 40, 375, 1440);
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    &__intro {
+        max-width: 950px;
+        margin: 0 auto 24px;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    &__list {
+        max-width: 950px;
+        margin: 0 auto;
+        border-top: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: 50px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+
+        @include v.tab {
+            grid-template-columns: 250px 1fr;
+        }
+    }
+
+    &__row--large {
+        @include v.tab {
+            min-height: 100px;
+        }
+    }
+
+    &__term,
+    &__description {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        padding: 14px 20px;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    &__term {
+        font-weight: 500;
+        background: var(--soft-strong);
+
+        @include v.tab {
+            border-right: 1px solid var(--line);
+        }
+    }
+
+    &__description {
+        display: block;
+        background: var(--white);
+    }
+
+    &__date {
+        max-width: 950px;
+        margin: 32px auto 0;
+        font-size: 16px;
+        line-height: 1.7;
+        text-align: right;
+    }
+}

@@ -1,0 +1,139 @@
+@use "../../foundation/variables" as v;
+
+.works {
+  scroll-margin-top: 170px;
+  background: var(--pale-blue);
+
+  &__inner {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: v.fluid(60, 80, 375, 1440) 20px;
+  }
+
+  &__list {
+    display: grid;
+    gap: v.fluid(24, 60, 375, 1440);
+    max-width: 1140px;
+    margin: 0 auto;
+
+    @include v.tab {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    @include v.lt {
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
+  }
+
+  &__link {
+    display: block;
+    border-radius: 10px;
+
+    &:hover,
+    &:focus-visible {
+      .works__card {
+        box-shadow: var(--shadow);
+        transform: translateY(-8px);
+      }
+
+      .works__image-img {
+        transform: scale(1.04);
+      }
+    }
+  }
+
+  &__card {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    transition: transform .3s ease, box-shadow .3s ease;
+
+    @include v.tab {
+      width: 340px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 340 / 273;
+    background: var(--surface-gray);
+  }
+
+  &__image-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .3s ease;
+  }
+
+  &__body {
+    min-height: 208px;
+    padding: 20px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+
+  }
+
+  &__details {
+    display: grid;
+    gap: 5px;
+    margin: 10px 0 0;
+  }
+
+  &__detail {
+    display: flex;
+    min-width: 0;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  &__detail--sentence &__term::after {
+    content: none;
+  }
+
+  &__detail--sentence &__description {
+    display: none;
+  }
+
+  &__term {
+    flex: 0 0 auto;
+    font-weight: 400;
+  }
+
+  &__term::after {
+    content: "\ff1a";
+  }
+
+  &__description {
+    min-width: 0;
+    margin: 0;
+  }
+
+
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    min-height: 25px;
+    margin-top: 10px;
+    padding: 4px 15px;
+    color: var(--white);
+    background: var(--primary);
+    border-radius: 8px;
+    font-size: 12px;
+  }
+
+  &__tag--lp {
+    margin-top: 30px;
+  }
+}

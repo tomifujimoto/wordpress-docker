@@ -1,0 +1,328 @@
+@use "../foundation/variables" as v;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-height: 72px;
+  background: var(--sky-blue);
+
+  @include v.tab {
+    min-height: 94px;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: calc(1340px + 40px);
+    height: 72px;
+    min-height: 72px;
+    margin: 0 auto;
+    padding: 8px 20px;
+
+    @include v.tab {
+      height: 94px;
+      min-height: 94px;
+      max-width: calc(1340px + 100px);
+      padding: 8px 50px;
+    }
+
+    @include v.lt {
+      gap: v.fluid(12, 20, 1024, 1440);
+      padding: v.fluid(16, 20, 1024, 1440) v.fluid(24, 50, 1024, 1440);
+    }
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 v.fluid(132, 142, 375, 767);
+    width: v.fluid(132, 142, 375, 767);
+    aspect-ratio: 200 / 54;
+
+    @include v.tab {
+      flex-basis: v.fluid(160, 200, 768, 1023);
+      width: 200px;
+      height: 54px;
+    }
+
+    @include v.lt {
+      flex-basis: v.fluid(160, 200, 1024, 1440);
+      width: v.fluid(160, 200, 1024, 1440);
+      height: auto;
+    }
+  }
+
+  &__logo-img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) invert(1);
+    object-fit: contain;
+  }
+
+  &__toggle {
+    position: relative;
+    z-index: 40;
+    display: inline-flex;
+    flex: 0 0 46px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    min-height: 46px;
+    padding: 0;
+    margin: 0;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    background: var(--white);
+    cursor: pointer;
+
+    @include v.tab {
+      flex-basis: 50px;
+      width: 50px;
+      min-width: 50px;
+      height: 50px;
+      min-height: 50px;
+    }
+
+    @include v.lt {
+      display: none;
+    }
+  }
+
+  &__toggle-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 2.5px 0;
+    border-radius: 999px;
+    background: var(--sky-blue);
+    transform-origin: center;
+    transition: opacity .25s ease, transform .3s ease;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    overflow-y: auto;
+    padding: 130px 20px 32px;
+    background: var(--sky-blue);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: opacity .3s ease, transform .3s ease, visibility .3s ease;
+
+    @include v.tab {
+      padding-right: 50px;
+      padding-left: 50px;
+    }
+
+    @include v.lt {
+      position: static;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1 1 auto;
+      gap: v.fluid(12, 20, 1024, 1440);
+      overflow: visible;
+      padding: 0;
+      background: transparent;
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+
+    }
+  }
+
+  &__menu-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    align-content: start;
+    gap: v.fluid(20, 32, 375, 767);
+    width: min(100%, 1000px);
+    min-height: auto;
+    margin: 0 auto;
+
+    @include v.lt {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1 1 auto;
+      gap: v.fluid(12, 20, 1024, 1440);
+      width: auto;
+      min-height: 0;
+      margin: 0;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    gap: 0;
+    font-size: v.fluid(20, 28, 375, 767);
+    font-weight: 400;
+    line-height: 1.35;
+    white-space: nowrap;
+
+    @include v.lt {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1 1 auto;
+      gap: v.fluid(10, 25, 1024, 1440);
+      min-width: 0;
+      margin-left: auto;
+      font-size: v.fluid(14, 16, 1024, 1440);
+    }
+  }
+
+  &__nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: v.fluid(60, 78, 375, 767);
+    padding: 10px v.fluid(4, 16, 375, 767);
+    color: var(--white);
+    border-bottom: 1px solid var(--white-line-soft);
+    border-radius: 6px;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+
+    @include v.lt {
+      display: inline-flex;
+      min-height: auto;
+      padding: 2px 0;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+    }
+  }
+
+  &__nav-link::after {
+    flex: 0 0 .55em;
+    width: .55em;
+    height: .55em;
+    content: "";
+    border-top: .125em solid var(--white);
+    border-right: .125em solid var(--white);
+    transform: rotate(45deg);
+    transition: border-color .2s ease, transform .2s ease;
+
+    @include v.lt {
+      content: none;
+    }
+  }
+
+  &__nav-link:hover {
+    color: var(--nav-hover);
+    background: var(--nav-hover-soft);
+    border-color: var(--nav-hover);
+
+    @include v.lt {
+      color: var(--nav-hover);
+      background: transparent;
+      border-color: var(--nav-hover);
+    }
+  }
+
+  &__nav-link:hover::after {
+    border-color: var(--white);
+    transform: translateX(4px) rotate(45deg);
+  }
+
+  &__cta {
+    background: var(--amber);
+    justify-self: center;
+    width: min(100%, 480px);
+    min-height: v.fluid(58, 72, 375, 767);
+    gap: v.fluid(12, 20, 375, 767);
+    border-radius: 12px;
+    box-shadow: none;
+    font-size: v.fluid(20, 28, 375, 767);
+    font-weight: 400;
+
+    &:hover {
+      background: var(--orange);
+    }
+
+    @include v.lt {
+      justify-self: auto;
+      flex: 0 0 v.fluid(144, 160, 1024, 1440);
+      width: v.fluid(144, 160, 1024, 1440);
+      min-width: v.fluid(144, 160, 1024, 1440);
+      max-width: 160px;
+      height: v.fluid(46, 50, 1024, 1440);
+      min-height: v.fluid(46, 50, 1024, 1440);
+      padding: 8px v.fluid(12, 15, 1024, 1440);
+      gap: v.fluid(6, 8, 1024, 1440);
+      border-radius: 10px;
+      font-size: v.fluid(14, 16, 1024, 1440);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+
+  &__cta-icon {
+    order: 2;
+  }
+
+  &__cta-text {
+    order: 1;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: v.fluid(32, 64, 375, 767);
+
+    @include v.lt {
+      display: none;
+    }
+  }
+
+  &__social-link {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 v.fluid(44, 60, 375, 767);
+    width: v.fluid(44, 60, 375, 767);
+    height: v.fluid(44, 60, 375, 767);
+    border-radius: 50%;
+  }
+
+  &__social-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+body.is-drawer-open {
+  .header__menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .header__toggle-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .header__toggle-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__toggle-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}

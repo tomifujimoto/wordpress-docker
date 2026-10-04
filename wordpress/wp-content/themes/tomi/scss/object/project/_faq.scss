@@ -1,0 +1,163 @@
+@use "../../foundation/variables" as v;
+
+.faq {
+  scroll-margin-top: 170px;
+  background: var(--panel);
+
+  &__inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: v.fluid(60, 80, 375, 1440) 20px;
+  }
+
+  &__lead {
+    margin: -20px 0 40px;
+    font-size: v.fluid(14, 20, 375, 1440);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  &__box {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: v.fluid(20, 40, 375, 1440) v.fluid(12, 125, 375, 1440);
+    background: var(--white);
+    border-radius: 10px;
+  }
+
+  &__list {
+    display: grid;
+    gap: 40px;
+  }
+
+  &__item {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+  }
+
+  &__question {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) 24px;
+    gap: 12px;
+    align-items: center;
+    min-height: 64px;
+    padding: 16px 16px;
+    cursor: pointer;
+    list-style: none;
+
+    @include v.tab {
+      grid-template-columns: 40px minmax(0, 1fr) 40px;
+      gap: 20px;
+      min-height: 80px;
+      padding: 20px 24px 20px 24px;
+    }
+  }
+
+  &__question-text {
+    font-size: v.fluid(16, 25, 375, 1440);
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+
+    @include v.tab {
+      width: 40px;
+      height: 40px;
+      font-size: 25px;
+    }
+  }
+
+  &__icon--question {
+    color: var(--white);
+    background: var(--primary);
+  }
+
+  &__icon--answer {
+    flex: 0 0 28px;
+    color: var(--primary);
+    background: var(--white);
+
+    @include v.tab {
+      flex-basis: 40px;
+    }
+  }
+
+  &__toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+
+    @include v.tab {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__toggle::before {
+    position: absolute;
+    content: "＋";
+    color: var(--primary);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+
+    @include v.tab {
+      font-size: 25px;
+    }
+  }
+
+  &__item[open] &__toggle {
+    border-color: var(--primary);
+    background: var(--primary);
+  }
+
+  &__item[open] &__toggle::before {
+    content: "ー";
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+
+    @include v.tab {
+      font-size: 25px;
+    }
+  }
+
+  &__answer {
+    display: flex;
+    gap: 12px;
+    margin: 20px 16px 20px;
+    padding: 18px 14px;
+    background: var(--pale-blue);
+    border-radius: 10px;
+
+    @include v.tab {
+      gap: 20px;
+      margin: 20px 25px 40px;
+      padding: 20px 20px 37px 20px;
+    }
+  }
+
+  &__answer-text {
+    margin: 0;
+    font-size: v.fluid(14, 20, 375, 1440);
+    line-height: 1.5;
+  }
+}

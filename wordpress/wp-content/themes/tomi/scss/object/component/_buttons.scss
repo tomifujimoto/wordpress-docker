@@ -1,0 +1,54 @@
+.btn,
+.header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-weight: 700;
+  line-height: normal;
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn--primary,
+.header__cta {
+  color: var(--white);
+  background: var(--amber);
+  box-shadow: var(--button-shadow);
+
+  &:hover {
+    background: var(--orange);
+  }
+}
+
+.btn--secondary {
+  color: var(--ink);
+  background: var(--white);
+  border-color: var(--surface);
+  box-shadow: var(--button-shadow);
+
+  &:hover {
+    color: var(--white);
+    background: var(--navy);
+    border-color: var(--navy);
+    box-shadow: var(--button-hover-shadow);
+  }
+}
+
+.mail-icon {
+  display: block;
+  flex: 0 0 1.25em;
+  width: 1.25em;
+  height: 1em;
+}

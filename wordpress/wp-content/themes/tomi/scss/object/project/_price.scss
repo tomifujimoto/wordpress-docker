@@ -1,0 +1,240 @@
+@use "../../foundation/variables" as v;
+
+.price {
+  scroll-margin-top: 170px;
+  background: var(--panel);
+
+  &__inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: v.fluid(60, 80, 375, 1440) 20px;
+  }
+
+  &__list {
+    display: grid;
+    gap: 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+
+    @include v.tab {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    @include v.lt {
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      align-items: end;
+      gap: v.fluid(20, 80, 1024, 1440);
+    }
+  }
+
+  &__card {
+    display: flex;
+    width: 100%;
+    min-height: 430px;
+    margin: 0 auto;
+    padding: 36px v.fluid(24, 56, 375, 1440);
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+
+    @include v.tab {
+      width: 350px;
+      min-height: 606px;
+    }
+
+    @include v.lt {
+      padding: v.fluid(40, 42, 1024, 1440) 20px;
+    }
+  }
+
+  &__card--featured {
+    border: 5px solid var(--primary);
+
+    @include v.lt {
+      min-height: 666px;
+    }
+  }
+
+  &__plan,
+  &__amount,
+  &__summary,
+  &__text,
+  &__items {
+    @include v.lt {
+      padding-inline: calc(#{v.fluid(20, 56, 1024, 1440)} - 20px);
+    }
+  }
+
+  &__body {
+    width: 100%;
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(100%, 300px);
+    min-height: 50px;
+    margin: -8px auto 18px;
+    color: var(--primary);
+    background: var(--pale-blue);
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 500;
+
+    @include v.lt {
+      width: 100%;
+      max-width: 300px;
+      font-size: 20px;
+    }
+  }
+
+  &__badge::before {
+    display: inline-block;
+    flex: 0 0 16px;
+    width: 16px;
+    height: 14px;
+    margin-right: 8px;
+    content: "";
+    background-image: url("../img/price-crown.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__plan {
+    margin: 0;
+    color: var(--primary);
+    font-size: v.fluid(20, 25, 375, 1440);
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  &__amount {
+    margin: 12px 0 0;
+    color: var(--primary);
+    font-size: v.fluid(28, 35, 375, 1440);
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  &__summary {
+    min-height: 38px;
+    margin: 8px 0 0;
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  &__text {
+    min-height: 38px;
+    margin: 18px 0 0;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  &__items {
+    display: grid;
+    gap: 20px;
+    margin: 34px 0 0;
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 39px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: normal;
+
+    @include v.lt {
+      white-space: nowrap;
+    }
+  }
+
+  &__item::before {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 16px;
+    height: 12px;
+    content: "";
+    background-image: url("../img/price-check.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__note {
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 20px;
+    color: var(--primary);
+    background: var(--soft-strong);
+    border-radius: 10px;
+    text-align: center;
+
+    @include v.tab {
+      padding: v.fluid(15, 20, 768, 1023);
+    }
+  }
+
+  &__note-text {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 0.35em;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+
+    @include v.tab {
+      text-align: center;
+    }
+  }
+
+  &__note-mark {
+    line-height: inherit;
+  }
+
+  &__note-list {
+    display: grid;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0 0;
+
+    @include v.tab {
+      margin: 0px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+  }
+
+  &__note-item {
+    position: relative;
+    padding-left: 22px;
+    font-size: 16px;
+    color: var(--ink);
+    text-align: left;
+  }
+
+  &__note-item::before {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background-image: url("../img/price-circle.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}

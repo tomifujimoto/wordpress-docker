@@ -1,0 +1,84 @@
+# Docker Composeで起動するコンテナ（サービス）を定義する。
+services:
+  # WordPressのデータを保存するMySQLデータベースを定義する。
+  db:
+    # MySQL 8.0.46の公式Dockerイメージを使用する。
+    image: mysql:8.0.46
+    # 手動で停止しない限り、終了時やPC再起動後にコンテナを再起動する。
+    restart: unless-stopped
+
+    # MySQLコンテナへ渡す環境変数を定義する。
+    environment:
+      # .envに書いたデータベース名をMySQLへ渡す。
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      # .envに書いたWordPress用データベースユーザー名をMySQLへ渡す。
+      MYSQL_USER: ${MYSQL_USER}
+      # .envに書いたWordPress用ユーザーのパスワードをMySQLへ渡す。
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      # .envに書いたMySQL管理者のパスワードをMySQLへ渡す。
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+    # MySQLのデータを保存する場所を設定する。
+    volumes:
+      # db_dataという保存領域をMySQLのデータ保存先へ接続する。
+      - db_data:/var/lib/mysql
+
+    # MySQLが接続可能な状態になったかを定期的に確認する。
+    healthcheck:
+      # MySQLの状態確認に使用するコマンドを定義する。
+      test:
+        # コマンドと引数を複数行の配列形式で記述する。
+        [
+          # コンテナ内のシェルを使って次の文字列を実行する。
+          "CMD-SHELL",
+          # rootユーザーでMySQLへ接続し、応答があるか確認する。
+          "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD"
+        ]
+      # 10秒ごとに状態を確認する。
+      interval: 10s
+      # 1回の確認処理を5秒で打ち切る。
+      timeout: 5s
+      # 10回連続で失敗したら異常状態と判定する。
+      retries: 10
+      # 起動直後の30秒間をMySQLの準備時間として扱う。
+      start_period: 30s
+
+  # WordPressを動かすApache・PHP入りコンテナを定義する。
+  wordpress:
+    # WordPress 7.1.2、PHP 8.3、Apacheの公式イメージを使用する。
+    image: wordpress:7.1.2-php8.3-apache
+    # 手動で停止しない限り、終了時やPC再起動後にコンテナを再起動する。
+    restart: unless-stopped
+
+    # WordPressを起動する前に必要なサービスを定義する。
+    depends_on:
+      # dbサービスを依存先として指定する。
+      db:
+        # dbが正常に接続可能になってからWordPressを起動する。
+        condition: service_healthy
+
+    # PC側とWordPressコンテナ側の通信ポートを接続する。
+    ports:
+      # PCの8080番ポートをコンテナの80番ポートへ接続する。
+      - "8080:80"
+
+    # WordPressへ渡すデータベース接続情報を定義する。
+    environment:
+      # 接続先をdbサービスのMySQL標準ポート3306に指定する。
+      WORDPRESS_DB_HOST: db:3306
+      # .envに書いたデータベース名をWordPressへ渡す。
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      # .envに書いたデータベースユーザー名をWordPressへ渡す。
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      # .envに書いたデータベースパスワードをWordPressへ渡す。
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+
+    # PC側のWordPressファイルをコンテナ内で使えるように設定する。
+    volumes:
+      # wordpressフォルダーをコンテナ内のWordPress設置先へ接続する。
+      - ./wordpress:/var/www/html
+
+# コンテナを削除しても保持する名前付き保存領域を定義する。
+volumes:
+  # MySQLのデータを保存するdb_dataを作成する。
+  db_data:

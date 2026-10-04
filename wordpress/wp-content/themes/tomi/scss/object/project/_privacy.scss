@@ -1,0 +1,70 @@
+@use "../../foundation/variables" as v;
+
+.privacy {
+  background: var(--pale-blue);
+
+  &__inner {
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    padding: v.fluid(60, 80, 375, 1440) 20px v.fluid(72, 110, 375, 1440);
+  }
+
+  &__head {
+    margin-bottom: v.fluid(36, 52, 375, 1440);
+    text-align: center;
+  }
+
+  &__title {
+    margin: 10px 0 0;
+    font-size: v.fluid(27, 40, 375, 1440);
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  &__lead {
+    margin: 0;
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  &__body {
+    display: grid;
+    gap: v.fluid(28, 36, 375, 1440);
+  }
+
+  &__intro,
+  &__text,
+  &__item,
+  &__note,
+  &__foot {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  &__section {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__heading {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  &__list {
+    display: grid;
+    gap: 4px;
+    padding-left: 1.2em;
+    margin: 0;
+  }
+
+  &__note {
+    margin-top: 6px;
+  }
+}

@@ -1,0 +1,11 @@
+.env
+.DS_Store
+Thumbs.db
+
+wordpress/*
+!wordpress/wp-content/
+wordpress/wp-content/*
+!wordpress/wp-content/themes/
+wordpress/wp-content/themes/*
+!wordpress/wp-content/themes/tomi/
+!wordpress/wp-content/themes/tomi/**

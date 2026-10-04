@@ -1,0 +1,355 @@
+@use "../../foundation/variables" as v;
+
+.about {
+  scroll-margin-top: 170px;
+  background: var(--pale-blue);
+
+  &__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: v.fluid(60, 74, 375, 1440) v.fluid(20, 35, 375, 1440) 60px;
+
+    @include v.tab {
+      padding: v.fluid(44, 80, 768, 1023) v.fluid(20, 50, 768, 1023) 80px;
+    }
+  }
+
+  &__profile {
+    display: grid;
+    gap: v.fluid(24, 62, 375, 1440);
+    align-items: start;
+    max-width: 1021px;
+    margin: 0 auto v.fluid(56, 64, 375, 1440);
+
+    @include v.tab {
+      grid-template-columns: minmax(250px, 321px) minmax(0, 638px);
+      justify-content: center;
+    }
+  }
+
+  &__photo {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 321 / 303;
+    background: var(--panel);
+    border-radius: 10px;
+
+    @include v.tab {
+      margin: 0;
+      width: min(100%, 321px);
+    }
+  }
+
+  &__photo-img {
+    max-width: 900px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center top;
+
+    @include v.tab {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__name {
+    margin: 0 0 10px;
+    font-size: v.fluid(24, 28, 375, 1440);
+    font-weight: 700;
+
+    @include v.tab {
+      font-size: 28px;
+    }
+  }
+
+  &__name-kana {
+    margin-left: 6px;
+    font-size: v.fluid(14, 16, 375, 1440);
+    font-weight: 400;
+    line-height: 30px;
+
+    @include v.tab {
+      font-size: 16px;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  &__social-link {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+  }
+
+  &__social-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__role {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 35px;
+  }
+
+  &__reason {
+    max-width: 1340px;
+    min-height: 497px;
+    margin: 0 auto;
+    padding: 40px v.fluid(20, 215, 375, 1440);
+    background: var(--panel);
+    border-radius: 10px;
+
+    @include v.lt {
+      padding-inline: v.fluid(40, 215, 1024, 1440);
+    }
+  }
+
+  &__reason-head {
+    max-width: 826px;
+    margin: 0 auto 20px;
+    text-align: center;
+  }
+
+  &__reason-label {
+    display: block;
+    color: var(--primary);
+    font-size: v.fluid(18, 20, 375, 1440);
+
+    @include v.tab {
+      font-size: 20px;
+    }
+  }
+
+  &__reason-heading {
+    margin: 0;
+    font-size: v.fluid(30, 40, 375, 1440);
+    font-weight: 500;
+    line-height: 1.35;
+
+    @include v.tab {
+      font-size: 40px;
+    }
+  }
+
+  &__reason-lead {
+    margin: 40px 0 0;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: left;
+
+    @include v.tab {
+      margin: 56px 0 0;
+    }
+  }
+
+  &__reason-list {
+    display: grid;
+    gap: v.fluid(18, 80, 375, 1440);
+    max-width: 910px;
+    margin: 0 auto;
+    justify-items: center;
+
+    @include v.lt {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: v.fluid(24, 80, 1024, 1440);
+    }
+  }
+
+  &__reason-card {
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    width: min(100%, 500px);
+    min-height: 190px;
+    padding: 16px 22px 18px;
+    text-align: center;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+
+    @include v.tab {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    @include v.lt {
+      width: 250px;
+      padding: 20px 22px 20px;
+    }
+  }
+
+  &__reason-icon {
+    display: grid;
+    place-items: center;
+    width: 70px;
+    height: 70px;
+  }
+
+  &__reason-icon-img {
+    object-fit: contain;
+  }
+
+  &__reason-title {
+    width: 100%;
+    margin: 10px 0 0;
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  &__reason-text {
+    margin: 10px 0 0;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  &__skills {
+    max-width: 1340px;
+    width: 100%;
+    min-height: 319px;
+    margin-top: v.fluid(28, 40, 375, 1440);
+    margin-right: auto;
+    margin-left: auto;
+    padding: 40px v.fluid(20, 87, 375, 1440);
+    background: var(--panel);
+    border-radius: 10px;
+
+    @include v.tab {
+      padding: 40px 20px;
+    }
+  }
+
+  &__skills-head {
+    margin: 0 auto 40px;
+    text-align: center;
+
+    @include v.tab {
+      margin: 0 auto 56px;
+    }
+  }
+
+  &__skills-title {
+    margin: 0;
+    font-size: v.fluid(22, 25, 375, 1440);
+    font-weight: 500;
+    line-height: 1.44;
+  }
+
+  &__skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: v.fluid(10, 50, 375, 1440);
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 0;
+  }
+
+  &__skill-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    min-height: 35px;
+    padding: 6px 12px;
+    color: var(--navy);
+    background: var(--pale-blue);
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__skill-list {
+    display: grid;
+    gap: 20px;
+    max-width: 1150px;
+    margin: 0 auto;
+    justify-items: center;
+
+    @include v.tab {
+      grid-template-columns: 1fr;
+    }
+
+    @include v.lt {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+
+      .about__skill-card {
+        grid-column: span 2;
+      }
+
+      .about__skill-card:nth-child(4) {
+        grid-column: 2 / span 2;
+      }
+
+    }
+  }
+
+  &__skill-card {
+    display: flex;
+    align-items: center;
+    gap: v.fluid(18, 25, 375, 1440);
+    width: min(100%, 500px);
+    min-height: 128px;
+    padding: 28px v.fluid(18, 19, 375, 1440);
+    text-align: left;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+
+    @include v.tab {
+      max-width: 500px;
+      width: 100%;
+    }
+  }
+
+  &__skill-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 v.fluid(50, 60, 375, 1440);
+    width: v.fluid(50, 60, 375, 1440);
+    height: v.fluid(50, 60, 375, 1440);
+  }
+
+  &__skill-icon-img {
+    object-fit: contain;
+  }
+
+  &__skill-body {
+    min-width: 0;
+  }
+
+  &__skill-card-title {
+    margin: 0;
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.22;
+    text-align: left;
+  }
+
+  &__skill-text {
+    margin: 10px 0 0;
+    font-size: v.fluid(14, 16, 375, 1440);
+    line-height: 1.2;
+    text-align: left;
+  }
+}

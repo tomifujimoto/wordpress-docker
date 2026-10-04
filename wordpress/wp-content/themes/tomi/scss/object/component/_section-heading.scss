@@ -1,0 +1,29 @@
+@use "../../foundation/variables" as v;
+
+.section-head {
+  margin-bottom: 40px;
+
+  @include v.tab {
+    margin-bottom: 56px;
+  }
+
+  &.centered {
+    text-align: center;
+  }
+
+  &__label {
+    display: block;
+    color: var(--primary);
+    font-size: v.fluid(18, 20, 375, 1440);
+
+    @include v.tab {
+      font-size: 20px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: v.fluid(30, 40, 375, 1440);
+    line-height: 1.35;
+  }
+}

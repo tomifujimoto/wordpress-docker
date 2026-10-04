@@ -1,0 +1,50 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://f-tomi.com/#business",
+  "name": "アトリエ トミ",
+  "alternateName": "Atelier Tomi",
+  "url": "https://f-tomi.com/",
+  "logo": "https://f-tomi.com/assets/img/logo.svg",
+  "image": "https://f-tomi.com/assets/img/ogp.png",
+  "description": "大阪拠点のWebデザイナー・コーダー、藤本富大による人材採用に強いホームページ・ランディングページ制作サービス。",
+  "email": "info@f-tomi.com",
+  "telephone": "+81-90-7961-8586",
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "大阪府"
+    },
+    {
+      "@type": "Country",
+      "name": "日本"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/web_atelier_tomi/?hl=ja",
+    "https://www.threads.com/@web_atelier_tomi"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "ホームページ制作"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "ランディングページ制作"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "WordPress保守・運用"
+      }
+    }
+  ]
+}

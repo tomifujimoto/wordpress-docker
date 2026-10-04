@@ -1,0 +1,223 @@
+@use "../../foundation/variables" as v;
+
+.mv {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  min-height: 600px;
+
+  &::before {
+    content: none;
+  }
+
+  &::after {
+    display: block;
+    height: 450px;
+    margin: 0 auto;
+    content: "";
+    background-image: url("../img/mv-sp.webp");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    @include v.tab {
+      height: 550px;
+    }
+  }
+
+  @include v.lt {
+    min-height: 700px;
+    max-width: 1470px;
+    margin: auto;
+
+    &::before {
+      position: absolute;
+      inset: -40px 0;
+      z-index: 0;
+      content: "";
+      background-image: url("../img/mv.webp");
+      background-repeat: no-repeat;
+      background-position: 70% center;
+      background-size: cover;
+      transform-origin: center;
+    }
+
+    &::after {
+      content: none;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: v.fluid(22, 32, 375, 767);
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    min-height: auto;
+    margin: 0 auto;
+    padding-block: 60px 20px;
+
+    @include v.tab {
+      width: calc(100% - 64px);
+      min-height: auto;
+      padding-block: 80px 40px;
+    }
+
+    @include v.lt {
+      gap: 50px;
+      width: 100%;
+      max-width: 1920px;
+      min-height: 700px;
+      padding-block: 80px;
+      padding-left: 50px;
+    }
+  }
+
+  &__card {
+    max-width: 1000px;
+    border-radius: 10px;
+
+    @include v.lt {
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+    }
+  }
+
+  &__label {
+    margin: 0 0 v.fluid(16, 24, 375, 767);
+    color: var(--primary);
+    font-size: v.fluid(16, 22, 375, 767);
+    font-weight: 700;
+    line-height: 1.4;
+
+    @include v.tab {
+      font-size: v.fluid(22, 25, 768, 1023);
+    }
+
+    @include v.lt {
+      margin-bottom: 22px;
+      font-size: v.fluid(22, 25, 1024, 1440);
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--ink);
+    font-size: v.fluid(22, 42, 375, 767);
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: 0;
+
+    span {
+      color: var(--primary);
+    }
+
+    .mv__title-text {
+      color: var(--ink);
+    }
+
+
+    @include v.tab {
+      font-size: v.fluid(42, 50, 768, 1023);
+    }
+
+    @include v.lt {
+      line-height: 1.45;
+      font-size: v.fluid(42, 55, 1024, 1440);
+    }
+  }
+
+
+
+
+
+
+  &__lead {
+    margin: v.fluid(18, 22, 375, 767) 0 0;
+    color: var(--ink);
+    font-size: v.fluid(16, 20, 375, 767);
+    font-weight: 700;
+    line-height: 1.45;
+
+    @include v.tab {
+      font-size: v.fluid(20, 23, 768, 1023);
+    }
+
+    @include v.lt {
+      margin-top: 25px;
+      font-size: v.fluid(17, 25, 1024, 1440);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    justify-content: center;
+
+
+    @include v.tab {
+      flex-direction: row;
+      max-width: 740px;
+
+    }
+
+    @include v.lt {
+      gap: 20px;
+      max-width: v.fluid(600, 800, 1024, 1440);
+      justify-content: inherit;
+      margin: 0;
+    }
+
+    .btn {
+      width: 100%;
+      min-height: v.fluid(50, 64, 375, 767);
+      padding: 5px 16px;
+      font-size: v.fluid(16, 20, 375, 767);
+
+      @include v.tab {
+        width: 70%;
+        padding: 12px 24px;
+        min-height: v.fluid(64, 70, 768, 1023);
+        font-size: v.fluid(20, 22, 768, 1023);
+      }
+
+      @include v.lt {
+        flex: 0 0 v.fluid(300, 320, 1024, 1440);
+        width: v.fluid(300, 320, 1024, 1440);
+        min-height: v.fluid(58, 64, 1024, 1440);
+        padding: 10px 20px;
+        font-size: v.fluid(18, 20, 1024, 1440);
+      }
+    }
+  }
+
+  .btn {
+    gap: v.fluid(18, 24, 1024, 1440);
+  }
+
+  .btn__icon {
+    width: v.fluid(22, 26, 1024, 1440);
+    height: v.fluid(17, 20, 1024, 1440);
+    filter: brightness(0) invert(1);
+  }
+
+  .btn__arrow {
+    width: v.fluid(8, 10, 1024, 1440);
+    height: v.fluid(16, 18, 1024, 1440);
+    object-fit: contain;
+    transition: filter .2s ease;
+  }
+
+  .btn--secondary:hover .btn__arrow {
+    filter: brightness(0) invert(1);
+  }
+}

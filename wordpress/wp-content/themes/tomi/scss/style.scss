@@ -1,0 +1,24 @@
+@use "foundation/reset";
+@use "foundation/variables";
+@use "foundation/fonts";
+@use "foundation/base";
+
+@use "object/component/buttons";
+@use "object/component/section-heading";
+
+@use "layout/header";
+@use "layout/footer";
+
+@use "object/project/mv";
+@use "object/project/about";
+@use "object/project/works";
+@use "object/project/service";
+@use "object/project/price";
+@use "object/project/process";
+@use "object/project/faq";
+@use "object/project/contact";
+@use "object/project/mail-confirm";
+@use "object/project/thanks";
+@use "object/project/privacy";
+@use "object/project/legal";
+@use "object/project/animation";
