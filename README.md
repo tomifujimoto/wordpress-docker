@@ -92,3 +92,19 @@ docker compose down
 
 - `.env`：実際の接続情報を保存するファイル。GitHubへ登録しません。
 - `.env.example`：必要な設定項目を示す見本。GitHubへ登録します。
+# wordpress-docker
+
+Dockerで構築したWordPress開発環境です。
+
+## 構成
+
+- WordPress
+- MySQL
+- Docker Compose
+- 自作WordPressテーマ
+
+## 自作テーマ
+
+テーマは以下にあります。
+
+`wordpress/wp-content/themes/tomi`
