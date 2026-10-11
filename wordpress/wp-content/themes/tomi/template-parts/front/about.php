@@ -32,3 +32,7 @@
           </div>
         </div>
 
+        <?php get_template_part( 'template-parts/front/reasons' ); ?>
+        <?php get_template_part( 'template-parts/front/skills' ); ?>
+      </div>
+    </section>

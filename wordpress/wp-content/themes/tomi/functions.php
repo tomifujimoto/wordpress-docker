@@ -110,8 +110,15 @@ function tomi_metadata() {
         ? '大阪拠点のWebデザイナー・コーダー、藤本富大による人材採用に強いホームページ・ランディングページ制作サービス。'
         : wp_strip_all_tags( get_the_excerpt() );
 
-    // OGPで使用するページURLを取得する。
-    $url = is_singular() ? get_permalink() : home_url( '/' );
+    // 抜粋が空の場合もdescriptionが空にならないよう、共通の説明文を使用する。
+    if ( '' === trim( $description ) ) {
+        $description = 'アトリエ トミは、大阪を拠点にホームページ制作・ランディングページ制作・WordPress保守を行っています。';
+    }
+
+    // OGPには、投稿・固定ページではそのページ、一覧・アーカイブでは現在の一覧URLを使用する。
+    $url = is_singular()
+        ? get_permalink()
+        : get_pagenum_link( max( 1, (int) get_query_var( 'paged' ) ) );
 
     // 管理画面でサイトアイコンが未設定の場合は、テーマ内のアイコンを使用する。
     if ( ! has_site_icon() ) {
@@ -129,7 +136,8 @@ function tomi_metadata() {
 
     // SNS：ページが共有されたときのタイトル、説明文、画像を設定する。
     $meta = array(
-        'og:type' => 'website', 'og:site_name' => 'アトリエ トミ',
+        'og:type' => is_singular( 'post' ) ? 'article' : 'website',
+        'og:site_name' => 'アトリエ トミ',
         'og:title' => wp_get_document_title(), 'og:description' => $description,
         'og:url' => $url, 'og:image' => $uri . '/assets/img/ogp.png', 'og:locale' => 'ja_JP',
     );
