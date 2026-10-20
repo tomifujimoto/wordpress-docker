@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Noto Sans JP";
-  src: url("../fonts/noto-sans-jp-500-subset-v2.woff2") format("woff2");
+  src: url("../fonts/noto-sans-jp-500-subset-v3.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -20,4 +20,23 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
+}
+
+// スキップリンクで使用する「本文へ移動」を収録した700ウェイトのサブセット。
+@font-face {
+  font-family: "Noto Sans JP Skip Link";
+  src: url("../fonts/noto-sans-jp-700-skip-link.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+// WordPressのローカル確認文で使う「カ」（U+30AB）の補助サブセット。
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url("../fonts/noto-sans-jp-400-katakana-ka.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+30AB;
 }
